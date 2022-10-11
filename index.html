@@ -4,15 +4,19 @@
       .myHeading {
         color: red;
       }
+      header {
+        height: 6em;
+      }
     </style>
   </head>
 
   <body>
-    <div>
-      <h1>This is the title of the page</h1>
-      <h2>This is the subtitle of the page</h2>
-    </div>
-
+    <header onclick="makeItClickable(event)">
+      <div>
+        <h1>This is the title of the page</h1>
+        <h2>This is the subtitle of the page</h2>
+      </div>
+    </header>
     <div>
       <hr />
 
@@ -45,7 +49,7 @@
 
     <div>
       <p>And this text is just for the exercise too!</p>
-      <h2 style="color: red">
+      <h2 style="color: red" onclick="changeFooterText(event)" id="footer">
         Save this page on your computer and open it with VSCode to get the
         questions!
       </h2>
@@ -75,7 +79,9 @@
 
       const changePcontent = function () {
         var paragraph = document.querySelectorAll("div p");
-        paragraph.innerText = "Changed Text of the p inside a div";
+        for (let i = 0; i < paragraph.length; i++) {
+          paragraph[i].innerHTML = "Changed Text of the p inside a div";
+        }
       };
 
       /* EXERCISE 4
@@ -92,8 +98,8 @@
 
       const addToTheSecond = function (content) {
         var node = document.createElement("li");
-        node.appendChild(document.createTextNode(content));
-        document.getElementsByClassName("secondList").appendChild(node);
+        node.innerHTML = "new list item";
+        document.getElementById("secondList").appendChild(node);
       };
 
       /* EXERCISE 6
@@ -101,7 +107,9 @@
     */
 
       const addParagraph = function (content) {
-        //
+        var node = document.createElement("p");
+        node.innerText = "Test123";
+        document.querySelector("body > div").appendChild(node);
       };
 
       /* EXERCISE 7
@@ -109,7 +117,7 @@
     */
 
       const firstUlDisappear = function () {
-        //
+        document.getElementById("firstList").style.display = "none";
       };
 
       /* EXERCISE 8
@@ -117,25 +125,43 @@
     */
 
       const paintItGreen = function () {
-        //
+        var lists = document.querySelectorAll("ul");
+        for (let i = 0; i < lists.length; i++) {
+          lists[i].style.backgroundColor = "green";
+        }
       };
 
       /* EXERCISE 9
      Make the heading of the page change color every time the user clicks on it.
     */
 
-      const makeItClickable = function () {
-        //
+      const makeItClickable = function (event) {
+        const color = getRandomColor();
+        document.querySelector("header").style.backgroundColor = color;
       };
+
+      function getRandomColor() {
+        const red = Math.round(Math.random() * 255);
+        const green = Math.round(Math.random() * 255);
+        const blue = Math.round(Math.random() * 255);
+
+        return "rgb(" + red + ", " + green + ", " + blue + ")";
+      }
 
       /* EXERCISE 10
      Change the footer text with something else when the user clicks on it.
     */
 
-      const changeFooterText = function () {
-        //
+      const changeFooterText = function (event) {
+        console.log(event);
+        var text = getRandomText();
+        console.log(text);
+        document.getElementById("footer").innerText = text;
       };
-
+      function getRandomText() {
+        var n = Math.floor(Math.random() * 10);
+        return "lorem" + n;
+      }
       /* EXERCISE 11
      Attach an event listener to the input field in the page that changes the text of the page's subtitle
     */
