@@ -60,7 +60,7 @@
     */
 
       const changeTitle = function (newTitle) {
-        document.querySelector("body > div > h1").innerText =
+        document.querySelector("header > div > h1").innerText =
           "This is the new Title out the function";
       };
 
@@ -69,7 +69,7 @@
     */
 
       const addClassToTitle = function () {
-        var title = document.querySelector("body > div > h1");
+        var title = document.querySelector("header > div > h1");
         title.classList.add("myHeading");
       };
 
@@ -153,9 +153,7 @@
     */
 
       const changeFooterText = function (event) {
-        console.log(event);
         var text = getRandomText();
-        console.log(text);
         document.getElementById("footer").innerText = text;
       };
       function getRandomText() {
@@ -167,10 +165,12 @@
     */
 
       const inputField = document.getElementById("input-field");
-      // ...
+      inputField.addEventListener("onchange", window.onload);
 
       window.onload = function () {
-        //
+        console.log("test");
+        var h2 = document.querySelector("h2");
+        h2.innerText = input.value;
       };
 
       /* EXERCISE 13
