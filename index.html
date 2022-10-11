@@ -1,185 +1,201 @@
 <html>
-  <head>
-    <style>
-      .myHeading {
-        color: red;
-      }
-      header {
-        height: 6em;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header onclick="makeItClickable(event)">
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>HW 11.10.2022</title>
+      <style>
+        .myHeading {
+          color: red;
+        }
+        header {
+          height: 6em;
+        }
+      </style>
+    </head>
+    <body>
+      <header onclick="makeItClickable(event)">
+        <div>
+          <h1>This is the title of the page</h1>
+          <h2 id="subtitle">This is the subtitle of the page</h2>
+        </div>
+      </header>
       <div>
-        <h1>This is the title of the page</h1>
-        <h2>This is the subtitle of the page</h2>
+        <hr />
+        <ul id="firstList">
+          <li>1st</li>
+          <li>2nd</li>
+          <li>3rd</li>
+        </ul>
+
+        <ul id="secondList">
+          <li>1st</li>
+          <li>2nd</li>
+          <li>3rd</li>
+        </ul>
+
+        <a href="https://epicode.it">This link goes to Epicode</a>
+
+        <div>
+          <p>This text is just for the exercise</p>
+        </div>
+
+        <div>
+          <input
+            type="text"
+            id="input-field"
+            placeholder="input field for the exercise"
+          />
+        </div>
       </div>
-    </header>
-    <div>
-      <hr />
-
-      <ul id="firstList">
-        <li>1st</li>
-        <li>2nd</li>
-        <li>3rd</li>
-      </ul>
-
-      <ul id="secondList">
-        <li>1st</li>
-        <li>2nd</li>
-        <li>3rd</li>
-      </ul>
-
-      <a href="https://epicode.it">This link goes to Epicode</a>
 
       <div>
-        <p>This text is just for the exercise</p>
+        <p>And this text is just for the exercise too!</p>
+        <footer>
+          <h2 style="color: red" onclick="changeFooterText(event)" id="footer">
+            Save this page on your computer and open it with VSCode to get the
+            questions!
+          </h2>
+        </footer>
       </div>
-
-      <div>
-        <input
-          type="text"
-          id="input-field"
-          placeholder="input field for the exercise"
-        />
-      </div>
-    </div>
-
-    <div>
-      <p>And this text is just for the exercise too!</p>
-      <h2 style="color: red" onclick="changeFooterText(event)" id="footer">
-        Save this page on your computer and open it with VSCode to get the
-        questions!
-      </h2>
-    </div>
-    <script>
-      /* EXERCISE 1
+      <script>
+        /* EXERCISE 1
      Write a function for changing the title of the document in something else.
     */
 
-      const changeTitle = function (newTitle) {
-        document.querySelector("header > div > h1").innerText =
-          "This is the new Title out the function";
-      };
+        const changeTitle = function (newTitle) {
+          document.querySelector("header > div > h1").innerText =
+            "This is the new Title out the function";
+        };
 
-      /* EXERCISE 2
+        /* EXERCISE 2
      Write a function for changing the class of the title of the page in "myHeading".
     */
 
-      const addClassToTitle = function () {
-        var title = document.querySelector("header > div > h1");
-        title.classList.add("myHeading");
-      };
+        const addClassToTitle = function () {
+          var title = document.querySelector("header > div > h1");
+          title.classList.add("myHeading");
+        };
 
-      /* EXERCISE 3
+        /* EXERCISE 3
      Write a function for changing the text of only the p which are children of a div.
     */
 
-      const changePcontent = function () {
-        var paragraph = document.querySelectorAll("div p");
-        for (let i = 0; i < paragraph.length; i++) {
-          paragraph[i].innerHTML = "Changed Text of the p inside a div";
-        }
-      };
+        const changePcontent = function () {
+          var paragraph = document.querySelectorAll("div p");
+          for (let i = 0; i < paragraph.length; i++) {
+            paragraph[i].innerHTML = "Changed Text of the p inside a div";
+          }
+        };
 
-      /* EXERCISE 4
+        /* EXERCISE 4
      Write a function for changing the href property of every link to https://www.google.com
     */
 
-      const changeUrls = function () {
-        document.querySelector("a").href = "https://www.google.com";
-      };
+        const changeUrls = function () {
+          document.querySelector("a").href = "https://www.google.com";
+        };
 
-      /* EXERCISE 5
+        /* EXERCISE 5
      Write a function for adding a new list item in the second unordered list.
     */
 
-      const addToTheSecond = function (content) {
-        var node = document.createElement("li");
-        node.innerHTML = "new list item";
-        document.getElementById("secondList").appendChild(node);
-      };
+        const addToTheSecond = function (content) {
+          var node = document.createElement("li");
+          node.innerHTML = "new list item";
+          document.getElementById("secondList").appendChild(node);
+        };
 
-      /* EXERCISE 6
+        /* EXERCISE 6
      Write a function for adding a second paragraph to the first div.
     */
 
-      const addParagraph = function (content) {
-        var node = document.createElement("p");
-        node.innerText = "Test123";
-        document.querySelector("body > div").appendChild(node);
-      };
+        const addParagraph = function (content) {
+          var node = document.createElement("p");
+          node.innerText = "Test123";
+          document.querySelector("body > div").appendChild(node);
+        };
 
-      /* EXERCISE 7
+        /* EXERCISE 7
      Write a function for making the first unordered list disappear.
     */
 
-      const firstUlDisappear = function () {
-        document.getElementById("firstList").style.display = "none";
-      };
+        const firstUlDisappear = function () {
+          document.getElementById("firstList").style.display = "none";
+        };
 
-      /* EXERCISE 8
+        /* EXERCISE 8
      Write a function for making the background of every unordered list green.
     */
 
-      const paintItGreen = function () {
-        var lists = document.querySelectorAll("ul");
-        for (let i = 0; i < lists.length; i++) {
-          lists[i].style.backgroundColor = "green";
-        }
-      };
+        const paintItGreen = function () {
+          let lists = document.querySelectorAll("ul");
+          for (let i = 0; i < lists.length; i++) {
+            lists[i].style.backgroundColor = "green";
+          }
+        };
 
-      /* EXERCISE 9
+        /* EXERCISE 9
      Make the heading of the page change color every time the user clicks on it.
     */
 
-      const makeItClickable = function (event) {
-        const color = getRandomColor();
-        document.querySelector("header").style.backgroundColor = color;
-      };
+        const makeItClickable = function (event) {
+          const color = getRandomColor();
+          document.querySelector("header").style.backgroundColor = color;
+        };
 
-      function getRandomColor() {
-        const red = Math.round(Math.random() * 255);
-        const green = Math.round(Math.random() * 255);
-        const blue = Math.round(Math.random() * 255);
+        function getRandomColor() {
+          const red = Math.floor(Math.random() * 255);
+          const green = Math.floor(Math.random() * 255);
+          const blue = Math.floor(Math.random() * 255);
 
-        return "rgb(" + red + ", " + green + ", " + blue + ")";
-      }
+          return "rgb(" + red + ", " + green + ", " + blue + ")";
+        }
 
-      /* EXERCISE 10
+        /* EXERCISE 10
      Change the footer text with something else when the user clicks on it.
     */
 
-      const changeFooterText = function (event) {
-        var text = getRandomText();
-        document.getElementById("footer").innerText = text;
-      };
-      function getRandomText() {
-        var n = Math.floor(Math.random() * 10);
-        return "lorem" + n;
-      }
-      /* EXERCISE 11
+        const changeFooterText = function (event) {
+          let text = getRandomText();
+          document.getElementById("footer").innerText = text;
+        };
+        function getRandomText() {
+          let n = Math.floor(Math.random() * 10);
+          return "lorem" + n;
+        }
+        /* EXERCISE 11
      Attach an event listener to the input field in the page that changes the text of the page's subtitle
     */
 
-      const inputField = document.getElementById("input-field");
-      inputField.addEventListener("onchange", window.onload);
+        const inputField = document.getElementById("input-field");
+        const subby = document.getElementById("subtitle");
 
-      window.onload = function () {
-        console.log("test");
-        var h2 = document.querySelector("h2");
-        h2.innerText = input.value;
-      };
+        inputField.addEventListener("input", (e) => {
+          subby.innerHTML = e.target.value;
+        });
 
-      /* EXERCISE 13
+        /* EXERCISE 12
+      set welcome alert message when page is reloaded 
+     */
+        function pageAlert() {
+          window.onload = function () {
+            alert("This page has succesfully loaded ");
+            //
+          };
+        }
+        // pageAlert();
+
+        /* EXERCISE 13
      Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
     */
 
-      /* ### EXTRA ###  EXERCISE 14
+        /* ### EXTRA ###  EXERCISE 14
      Create an input of type "color" and use it to change the color of the subtitle
     */
-    </script>
-  </body>
+      </script>
+    </body>
+  </html>
 </html>
